@@ -26,12 +26,12 @@ def get_home(request):
                 if 'trump' in match.lower():
                     trump_news.append(match)
         else:
-           print "No match!!"
+           print("No match!!")
 
     headlines = []
     for news in trump_news:      
         news_json = json.loads(news)
         headlines.append(news_json['headline'])
         
-    print headlines
+    print(headlines)
     return render(request, 'crawl/main.html', {'headlines': headlines})
