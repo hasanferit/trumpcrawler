@@ -15,7 +15,8 @@
 		{% endif %}
     </div>
     <div style="margin-left: 620px;"> 
-	    <p id="news_content" ></p>
+		<img id="article_thumbnail" src="">
+	    <p id="article_content" ></p>
 	</div>
 </div>
 
@@ -34,10 +35,13 @@ function get_content(index) {
       data: {
       	'index': index,
       	'uris': '{{ uris }}',
+      	'thumbnails': '{{ thumbnails }}',
       },
       success: function(response){
       	content = response['content']
-	    document.getElementById("news_content").innerHTML = content;
+      	thumbnail = response['thumbnail']
+	    document.getElementById("article_thumbnail").innerHTML = content;
+	    document.getElementById("article_content").src = thumbnail;
       }
     });
 
