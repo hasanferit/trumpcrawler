@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from crawl.views import get_home
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', get_home, name='home'),
 ]

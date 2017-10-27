@@ -1,0 +1,9 @@
+{% if headlines %}
+    <ul>
+    	{% for head in headlines %}
+        <li>{{ head }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No Trump news are available.</p>
+{% endif %}
