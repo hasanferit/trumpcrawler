@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from crawl.views import get_home
+from crawl.views import get_home, get_content
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', get_home, name='home'),
+    url(r'^crawl/cnn$', get_home, name='home'),
+    url(r'^crawl/cnn/get/content/$', get_content, name='content'),
 ]
