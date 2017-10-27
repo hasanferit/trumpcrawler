@@ -15,7 +15,7 @@ def get_home(request):
     html = urlopen('http://edition.cnn.com/')
     fw = open('source_file', 'w')
     # fw.write(str(page_opener.read()))
-    fw.write(html)
+    fw.write(str(html.read()))
     fw.close()
 
     fr = open('source_file', 'r')
