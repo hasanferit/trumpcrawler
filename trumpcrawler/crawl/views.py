@@ -1,5 +1,6 @@
 from django.shortcuts import render
-import urllib2
+# import urllib2
+from urllib.request import urlopen
 import re
 import json
 
@@ -7,12 +8,14 @@ import json
 
 def get_home(request):
     
-    opener = urllib2.build_opener()
-    opener.addheaders = [('User-Agent', 'Mozilla/5.0')]
+    # opener = urllib2.build_opener()
+    # opener.addheaders = [('User-Agent', 'Mozilla/5.0')]
 
-    page_opener = opener.open('http://edition.cnn.com/')
+    # page_opener = opener.open('http://edition.cnn.com/')
+    html = urlopen('http://edition.cnn.com/')
     fw = open('source_file', 'w')
-    fw.write(str(page_opener.read()))
+    # fw.write(str(page_opener.read()))
+    fw.write(html)
     fw.close()
 
     fr = open('source_file', 'r')
