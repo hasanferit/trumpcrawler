@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import  JsonResponse
-import urllib2
-# from urllib.request import urlopen
+# import urllib2
+from urllib.request import urlopen
 import re
 import json
 
@@ -10,13 +10,13 @@ import json
 
 def get_home(request):
     
-    opener = urllib2.build_opener()
-    opener.addheaders = [('User-Agent', 'Mozilla/5.0')]
-    page_opener = opener.open('http://edition.cnn.com/')
-    # html = urlopen('http://edition.cnn.com/')
+    # opener = urllib2.build_opener()
+    # opener.addheaders = [('User-Agent', 'Mozilla/5.0')]
+    # page_opener = opener.open('http://edition.cnn.com/')
+    html = urlopen('http://edition.cnn.com/')
     fw = open('source_file', 'w')
-    fw.write(str(page_opener.read()))
-    # fw.write(str(html.read()))
+    # fw.write(str(page_opener.read()))
+    fw.write(str(html.read()))
     fw.close()
 
     fr = open('source_file', 'r')
@@ -54,15 +54,14 @@ def get_content(request):
     uris = uris.split('&#39;, u&#39;')
     uris[0] = uris[0].replace('[u&#39;','')
     uris[-1] = uris[-1].replace('&#39;]','')
-    print uris
     uri = uris[index]
-    opener = urllib2.build_opener()
-    opener.addheaders = [('User-Agent', 'Mozilla/5.0')]
-    page_opener = opener.open('http://edition.cnn.com'+uri)
-    # html = urlopen('http://edition.cnn.com/'+uri)
+    # opener = urllib2.build_opener()
+    # opener.addheaders = [('User-Agent', 'Mozilla/5.0')]
+    # page_opener = opener.open('http://edition.cnn.com'+uri)
+    html = urlopen('http://edition.cnn.com/'+uri)
     fw = open('source_file_2', 'w')
-    fw.write(str(page_opener.read()))
-    # fw.write(str(html.read()))
+    # fw.write(str(page_opener.read()))
+    fw.write(str(html.read()))
     fw.close()
     fr = open('source_file_2', 'r')
     lines = fr.readlines()
