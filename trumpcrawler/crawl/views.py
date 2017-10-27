@@ -33,8 +33,7 @@ def get_home(request):
 
     headlines = []
     for news in trump_news:      
-        news_json = json.loads(news)
+        news_json = json.loads(news.replace("\\'", "'").replace('\\\\"',"'"),  strict=False)
         headlines.append(news_json['headline'])
-        
-    print(headlines)
+
     return render(request, 'crawl/main.html', {'headlines': headlines})
