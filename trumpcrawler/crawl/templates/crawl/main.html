@@ -33,7 +33,7 @@ function get_content(index) {
       url: "/crawl/cnn/get/content/",
       data: {
       	'index': index,
-      	'uris':'{{ uris }}',
+      	'uris': '{{ uris }}',
       },
       success: function(response){
       	content = response['content']

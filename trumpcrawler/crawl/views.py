@@ -50,15 +50,17 @@ def get_content(request):
 
     index = request.POST.get('index')
     index = int(index)
+    print(index)
     uris = request.POST.get('uris')
-    uris = uris.split('&#39;, u&#39;')
-    uris[0] = uris[0].replace('[u&#39;','')
+    uris = uris.split('&#39;, &#39;')
+    uris[0] = uris[0].replace('[&#39;','')
     uris[-1] = uris[-1].replace('&#39;]','')
     uri = uris[index]
     # opener = urllib2.build_opener()
     # opener.addheaders = [('User-Agent', 'Mozilla/5.0')]
     # page_opener = opener.open('http://edition.cnn.com'+uri)
-    html = urlopen('http://edition.cnn.com/'+uri)
+    print('http://edition.cnn.com/'+uri)
+    html = urlopen('http://edition.cnn.com'+uri)
     fw = open('source_file_2', 'w')
     # fw.write(str(page_opener.read()))
     fw.write(str(html.read()))
