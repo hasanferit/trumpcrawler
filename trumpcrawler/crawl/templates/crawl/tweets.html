@@ -15,7 +15,7 @@ $(document).ready(function() {
   
   for (i = 0; i < tweets.length; i++) { 
 	var p = document.createElement('p');
-    p.innerHTML = tweets[i];
+    p.innerHTML = i + '- ' + tweets[i] + '<br>';
 	var element = document.getElementById("tweet_div");
 	element.appendChild(p);
   }

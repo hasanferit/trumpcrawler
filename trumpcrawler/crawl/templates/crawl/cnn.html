@@ -3,11 +3,11 @@
 <body>
 
 <div style="width: 100%; overflow: hidden;">
-    <div style="width: 600px; float: left;">
+    <div id="headline_div" style="width: 600px; float: left;">
     	{% if headlines_zipped %}
 		    <ul>
 		        {% for index, head in headlines_zipped %}
-			        <p id={{ index }} onclick="get_content('{{ index }}')">{{ head }}</p>
+			        <p id={{ index }} onclick="get_content('{{ index }}')">{{ index }}- {{ head }}</p>
 		        {% endfor %}
 		    </ul>
 		{% else %}
@@ -36,11 +36,19 @@ $(document).ready(function() {
   authors = {{ authors | safe}};
   titles = {{ titles | safe}};
   datetimes = {{ datetimes | safe}};
+  zipped = {{ headlines_zipped | safe}};
+
+  for (i = 0; i < zipped.length; i++) { 
+    // var p = document.createElement('p');
+    //   p.innerHTML = i + '- ' + tweets[i] + '<br>';
+    // var element = 
+    document.getElementById(zipped.0).innerHTML = zipped.1;
+    // element.appendChild(p);
+  }
 });
 
 
 function get_content(index) {
-  
     var content = contents[index];
     var thumbnail = thumbnails[index];
     var title = titles[index];
