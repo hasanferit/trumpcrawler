@@ -32,7 +32,7 @@ def get_tweets(request):
                 if 'http' in mention:
                     continue
                 match = re.sub(mention, '\"https://twitter.com'+mention[1:], match)
-            
+
             trump_tweets.append(match)
 
 
@@ -74,7 +74,8 @@ def get_articles(request):
     datetimes = []
     contents = []
     for uri in uris:
-        html = urlopen('http://edition.cnn.com/'+uri)
+        print(uri)
+        html = urlopen('http://edition.cnn.com'+uri)
         fw = open('source_file_2', 'w')
         fw.write(str(html.read()))
         fw.close()
