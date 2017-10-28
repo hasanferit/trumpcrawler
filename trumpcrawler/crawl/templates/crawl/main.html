@@ -4,18 +4,10 @@
 
 <div style="width: 100%; overflow: hidden;">
     <div style="width: 600px; float: left;">
-    	{% if headlines_zipped %}
-		    <ul>
-		        {% for index, head in headlines_zipped %}
-			        <p id={{ index }} onclick="get_content('{{ index }}')">{{ head }}</p>
-		        {% endfor %}
-		    </ul>
-		{% else %}
-		    <p>No Trump news are available.</p>
-		{% endif %}
+    	<a href="/crawl/cnn">Articles</a>
     </div>
     <div style="margin-left: 620px;"> 
-	    <p id="news_content" ></p>
+    	<a href="/crawl/twitter">Tweets</a>
 	</div>
 </div>
 
@@ -25,22 +17,4 @@
 </html>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 <script type="text/javascript">
-
-function get_content(index) {
-	console.log(index);
-	$.ajax({
-      type: "POST",
-      url: "/crawl/cnn/get/content/",
-      data: {
-      	'index': index,
-      	'uris':'{{ uris }}',
-      },
-      success: function(response){
-      	content = response['content']
-	    document.getElementById("news_content").innerHTML = content;
-      }
-    });
-
-}
-
 </script>

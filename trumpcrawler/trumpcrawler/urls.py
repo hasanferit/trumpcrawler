@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from crawl.views import get_home, get_content
+from crawl.views import get_home, get_tweets, get_articles
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^crawl/cnn$', get_home, name='home'),
-    url(r'^crawl/cnn/get/content/$', get_content, name='content'),
+    url(r'^crawl/main$', get_home, name='home'),
+    url(r'^crawl/twitter$', get_tweets, name='tweet'),
+    url(r'^crawl/cnn$', get_articles, name='article'),
+    # url(r'^crawl/cnn/get/content/$', get_content, name='content'),
 ]
