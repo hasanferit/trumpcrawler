@@ -4,23 +4,26 @@
 
 <div style="width: 100%; overflow: hidden;">
     <div id="headline_div" style="width: 600px; float: left;">
-    	{% if headlines_zipped %}
-		    <ul>
-		        {% for index, head in headlines_zipped %}
-			        <p id={{ index }} onclick="get_content('{{ index }}')">{{ index }}- {{ head }}</p>
-		        {% endfor %}
-		    </ul>
-		{% else %}
-		    <p>No Trump news are available.</p>
-		{% endif %}
+      {% if headlines_zipped %}
+        <ul>
+            {% for index, head in headlines_zipped %}
+              <p id={{ index }} onclick="get_content('{{ index }}')">{{ index }}- {{ head }}</p>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Trump news are available.</p>
+    {% endif %}
     </div>
     <div style="margin-left: 620px;"> 
-		<img id="article_thumbnail" src="">
+
+      <a id="article_url" href="" target="_blank">
+        <img id="article_thumbnail" src="">
+      </a>
       <p id="article_title" ></p>
       <p id="article_author" ></p>
       <p id="article_datetime" ></p>
-	    <p id="article_content" ></p>
-	</div>
+      <p id="article_content" ></p>
+  </div>
 </div>
 
 
@@ -36,7 +39,7 @@ $(document).ready(function() {
   authors = {{ authors | safe}};
   titles = {{ titles | safe}};
   datetimes = {{ datetimes | safe}};
-  
+  uris = {{ uris | safe}}
 });
 
 
@@ -46,7 +49,9 @@ function get_content(index) {
     var title = titles[index];
     var author = authors[index];
     var datetime = datetimes[index];
+    var uri = uris[index];
     document.getElementById("article_content").innerHTML = content;
+    document.getElementById("article_url").href = 'https://www.cnn.com' + uri;
     document.getElementById("article_thumbnail").src = thumbnail;
     document.getElementById("article_title").innerHTML = title;
     document.getElementById("article_author").innerHTML = author;
