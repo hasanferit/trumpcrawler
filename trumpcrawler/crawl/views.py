@@ -17,11 +17,13 @@ def get_tweets(request):
     '''
     Gets the latest tweets from Trumps official account
     '''
+    #Write to a temp file
     html = urlopen('https://twitter.com/realDonaldTrump')
     fw = open('source_file', 'w')
     fw.write(str(html.read()))
     fw.close()
 
+    #Read from the temp file
     fr = open('source_file', 'r')
     lines = fr.readlines()
     fr.close()
@@ -124,19 +126,19 @@ def get_articles(request):
             for match in matches:
                 datetime += match
         content = re.sub(r'class=\"zn-body__paragraph.*?\">',
-                         '', content)  # content.replace()
+                         '', content)  
         content = re.sub('</div>', '<br>', content)
 
         title = re.sub(r'<h1 class="pg-headline">',
-                       '', title)  # content.replace()
+                       '', title)  
         title = re.sub('<\/h1>', '', title)
 
         author = re.sub(r'<span class="metadata__byline__author">',
-                        '', author)  # content.replace()
+                        '', author) 
         author = re.sub('<\/span>', '', author)
 
         datetime = re.sub(r'<p class="update-time">', '',
-                          datetime)  # content.replace()
+                          datetime)  
         datetime = re.sub('<\/span', '', datetime)
 
         contents.append(content)
