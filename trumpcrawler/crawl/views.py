@@ -5,14 +5,18 @@ from urllib.request import urlopen
 import re
 import json
 
-# Create your views here.
-
 
 def get_home(request):
+    '''
+    Home page
+    '''
     return render(request, 'crawl/main.html', {})
 
 
 def get_tweets(request):
+    '''
+    Gets the latest tweets from Trumps official account
+    '''
     html = urlopen('https://twitter.com/realDonaldTrump')
     fw = open('source_file', 'w')
     fw.write(str(html.read()))
@@ -44,11 +48,16 @@ def get_tweets(request):
 
 
 def get_articles(request):
+    '''
+    Gets the latest Trump articles from cnn.com
+    '''
+    #Write to a temp file
     html = urlopen('http://edition.cnn.com/')
     fw = open('source_file', 'w')
     fw.write(str(html.read()))
     fw.close()
 
+    #Read from the temp file
     fr = open('source_file', 'r')
     lines = fr.readlines()
     fr.close()
@@ -101,6 +110,15 @@ def get_articles(request):
             matches = re.findall(
                 r'<span class="metadata__byline__author">.*?<\/span>', line)
             for match in matches:
+
+                auth_hrefs = re.findall(r'<a href=".*?" class', match)
+                for auth_href in auth_hrefs:
+
+                    auth_link = re.findall(r'".*?"', auth_href)[0]
+                    if 'http' in auth_link:
+                        continue
+                    match = re.sub(
+                        auth_link, '\"https://cnn.com' + auth_link[1:], match)
                 author += match
             matches = re.findall(r'<p class="update-time">.*?<\/span', line)
             for match in matches:
