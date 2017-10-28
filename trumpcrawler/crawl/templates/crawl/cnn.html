@@ -1,0 +1,56 @@
+
+<html>
+<body>
+
+<div style="width: 100%; overflow: hidden;">
+    <div style="width: 600px; float: left;">
+    	{% if headlines_zipped %}
+		    <ul>
+		        {% for index, head in headlines_zipped %}
+			        <p id={{ index }} onclick="get_content('{{ index }}')">{{ head }}</p>
+		        {% endfor %}
+		    </ul>
+		{% else %}
+		    <p>No Trump news are available.</p>
+		{% endif %}
+    </div>
+    <div style="margin-left: 620px;"> 
+		<img id="article_thumbnail" src="">
+      <p id="article_title" ></p>
+      <p id="article_author" ></p>
+      <p id="article_datetime" ></p>
+	    <p id="article_content" ></p>
+	</div>
+</div>
+
+
+
+</body>
+</html>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+
+  contents = {{ contents | safe}};
+  thumbnails = {{ thumbnails | safe}};
+  authors = {{ authors | safe}};
+  titles = {{ titles | safe}};
+  datetimes = {{ datetimes | safe}};
+});
+
+
+function get_content(index) {
+  
+    var content = contents[index];
+    var thumbnail = thumbnails[index];
+    var title = titles[index];
+    var author = authors[index];
+    var datetime = datetimes[index];
+    document.getElementById("article_content").innerHTML = content;
+    document.getElementById("article_thumbnail").src = thumbnail;
+    document.getElementById("article_title").innerHTML = title;
+    document.getElementById("article_author").innerHTML = author;
+    document.getElementById("article_datetime").innerHTML = datetime;
+}
+
+</script>
