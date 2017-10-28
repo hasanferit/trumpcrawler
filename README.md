@@ -1,4 +1,4 @@
-# trumpcrawler
+# TrumpCrawler
 Trumpcrawler is a website that crawls latest (up to 25) articles related to Trump from CNN.com and latest tweets from Trump's official Twitter account (https://twitter.com/realDonaldTrump).
 
 Table Of Contents
