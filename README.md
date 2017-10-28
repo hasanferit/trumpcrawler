@@ -18,7 +18,8 @@ If you choose articles, this will navigate you to another page. At the left you 
 If you choose to see the tweets, you will end up with a different page showing Trump's latest tweets. You can click the links on tweets.
 
 # 3- Notes
-
-Python code in this project is PEP-8 formatted. 
-Pylint score is 8.16
-The project has to branches for Python2 and Python3.
+There are several extra features that I add for this project:
+-Python code in this project is PEP-8 formatted. 
+-The project has to branches for Python2 and Python3.
+-All the links in the real article and tweets are also clickable TrumpCrawler.
+-You can navigate to the actual article page if you clik on the image of the article shown in TrumpCrawler.
