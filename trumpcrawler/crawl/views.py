@@ -74,9 +74,9 @@ def get_articles(request):
     datetimes = []
     contents = []
     for uri in uris:
-        page_opener = opener.open('http://edition.cnn.com'+uri)
+        html = urlopen('http://edition.cnn.com/'+uri)
         fw = open('source_file_2', 'w')
-        fw.write(str(page_opener.read()))
+        fw.write(str(html.read()))
         fw.close()
         fr = open('source_file_2', 'r')
         lines = fr.readlines()
