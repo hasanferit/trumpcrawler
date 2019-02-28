@@ -14,7 +14,7 @@ Some of the libraries used in this project differs from Python2 to Python3. Ther
 # 2- Usage
 
 First run the command .\manage.py runserver in trumpcrawler directory.  This will start Django server, if you installed Django correctly. Then go to http://localhost:8000/crawl/main url on your web browser. This will birng you to main page. You can choose to see the latest article or latest tweets on this page.
-If you choose articles, this will navigate you to another page. At the left you will see the headlines of the articles. If you click on of the headlines you will see the content of the article on the left. 
+If you choose articles, this will navigate you to another page. At the left you will see the headlines of the articles. If you click one of the headlines you will see the content of the article on the left. 
 If you choose to see the tweets, you will end up with a different page showing Trump's latest tweets. You can click the links on tweets.
 
 # 3- Notes
